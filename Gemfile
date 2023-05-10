@@ -14,15 +14,6 @@ gem 'sprockets', '< 4'
 gem 'sassc-rails'
 gem 'faker'
 
-group :development do
-  gem 'htmlbeautifier'
-  gem 'listen', '~> 3.2'
-  gem 'rufo'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'spring'
-  gem 'web-console', '>= 3.3.0'
-end
-
 group :development, :test do
   gem 'amazing_print'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -35,6 +26,10 @@ group :development, :test do
 end
 
 group :development do
+  gem 'listen', '~> 3.2'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring'
+  gem 'web-console', '>= 3.3.0'
   gem 'annotate'
   gem 'better_errors', '2.6'
   gem 'binding_of_caller'
@@ -43,7 +38,6 @@ group :development do
   gem 'htmlbeautifier'
   gem 'solargraph'
   gem 'rails_db', '2.3.1'
-
 end
 
 group :test do

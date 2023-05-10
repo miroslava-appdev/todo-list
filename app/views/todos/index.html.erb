@@ -1,0 +1,169 @@
+<div>
+  <div>
+    <h1>
+      Your todo list
+    </h1>
+  </div>
+</div>
+
+
+<div>
+  <div>
+    <h2>Add a new todo</h2>
+    <form action="/insert_todo" method="post">
+      <div>
+        <label for="content_box">Describe the task:</label>
+        <input type="text" id="content_box" name="query_content">
+      </div>
+    <button> Add to Next Up </button>
+    </form>
+  </div>
+</div>
+
+<div class="next_up">
+  <h2>Next Up</h2>
+  <ul>
+    <li> ::marker 
+      <div> "ADD TO THIS SECTION"
+      </div>
+      <small> "<%= time_ago_in_words(ADDDDDDDD.created_at) %> ago" 
+        <a href="/delete_todo/:path_id">Delete</a>
+      </small>
+      <form action="/modify_todo/:path_id" method="post">
+        <input type="hidden" name="query_status" value="in_progress">
+        <button>Move to In Progress</button>
+      </form>
+    </li>
+  </ul>
+</div>
+
+<div class="in_progress">
+  <h2>In Progress<h2>
+  <ul>
+    <li> ::marker
+      <div>"ADD TO THIS SECTION"
+      </div>
+      <small> "<%= time_ago_in_words(ADDDDDDDD.created_at) %> ago" 
+        <a href="/delete_todo/:path_id">Delete</a>
+      </small>
+      <form action="/modify_todo/:path_id" method="post">
+        <input type="hidden" name="query_status" value="done">
+        <button>Move to Done</button>
+      </form>
+    </li>
+  </ul>
+</div>
+
+
+<div class="done">
+  <h2>Done</h2>
+  <ul>
+    <li> ::marker
+      <div>"ADD TO THIS SECTION"
+      </div>
+      <small> "<%= time_ago_in_words(ADDDDDDDD.created_at) %> ago" 
+        <a href="/delete_todo/:path_id">Delete</a>
+      </small>
+    </li>
+  </ul>
+</div>
+
+
+
+------------------------------------------
+
+
+
+      <div>
+        <label for="status_box">
+          Status
+        </label>
+
+        <input type="text" id="status_box" name="query_status">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <button>
+        Create todo
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Content
+        </th>
+
+        <th>
+          Status
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_todos.each do |a_todo| %>
+      <tr>
+        <td>
+          <%= a_todo.id %>
+        </td>
+
+        <td>
+          <%= a_todo.content %>
+        </td>
+
+        <td>
+          <%= a_todo.status %>
+        </td>
+
+        <td>
+          <%= a_todo.user_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_todo.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_todo.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/todos/<%= a_todo.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
