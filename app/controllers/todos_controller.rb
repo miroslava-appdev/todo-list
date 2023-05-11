@@ -16,7 +16,7 @@ class TodosController < ApplicationController
   def create
     @the_todo = Todo.new
     @the_todo.content = params.fetch("query_content")
-    @the_todo.user_id = params.fetch("query_user_id")
+    @the_todo.user_id = session.fetch(:user_id)
     @the_todo.save
     redirect_to("/")
   end
