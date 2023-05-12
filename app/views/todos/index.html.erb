@@ -16,13 +16,18 @@
   <h2>Next Up</h2>
     <ul>
     <% @list_of_todos.each do |todo| %>
-      <li><%= todo.content %><a href="/delete_todo/<%= todo.id %>">Delete</a><p><%= time_ago_in_words(todo.created_at) %> ago</p</li>
-    </ul>
+      <li><%= todo.content %>
+        <div>
+          <small><%= time_ago_in_words(todo.created_at) %> ago <a href="/delete_todo/<%= todo.id %>">Delete</a>
+          </small>
+        </div>
+      </li>
     <form action="/modify_todo/<%= todo.id %>" method="post">
         <input type="hidden" name="query_status" value="next_up">
         <button>Move to In Progress</button>
     </form>
   <% end %>
+  </ul>
 </div>
 
 <div class="in_progress" style="color: darkgreen">
@@ -30,7 +35,12 @@
   <ul>
     <% @list_of_todos.each do |todo| %>
       <% if todo.status =="next_up" %>
-        <li><%= todo.content %><a href="/delete_todo/<%= todo.id %>">Delete</a>Started <%= time_ago_in_words(todo.updated_at).gsub(/about /, '')%> ago</li>
+        <li><%= todo.content %>
+          <div> 
+            <small>Started <%= time_ago_in_words(todo.updated_at).gsub(/about /, '')%> ago <a href="/delete_todo/<%= todo.id %>">Delete</a>
+            </small>
+          </div>
+        </li>
         <form action="/modify_todo/<%= todo.id %>" method="post">
           <input type="hidden" name="query_status" value="done">
           <button>Move to Done</button>
@@ -47,7 +57,12 @@
     <% @list_of_todos.each do |todo| %>
       <% if todo.status == "done" %>
       <% time=Time.now %>
-    <li><%= todo.content %><a href="/delete_todo/<%= todo.id %>">Delete</a><p>Completed at <%= todo.updated_at.strftime("%l:%M%P on %d-%b-%Y")%> ago</p></li>
+    <li><%= todo.content %>
+      <div>
+        <small>Completed at <%= todo.updated_at.strftime("%l:%M%P on %d-%b-%Y")%> ago <a href="/delete_todo/<%= todo.id %>">Delete</a>
+        </small>
+      </div>
+    </li>
       <% end %>
     <% end %>
   </ul>
